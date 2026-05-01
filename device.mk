@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/xiaomi/rodin
+DEVICE_PATH := device/xiaomi/klee
 
 # Enforce generic ramdisk allow list
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
@@ -144,7 +144,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    LineageApertureOverlayRodin
+    LineageApertureOverlayKlee
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
@@ -253,7 +253,7 @@ PRODUCT_COPY_FILES += \
 
 # MiuiCamera
 ifeq ($(TARGET_SHIPS_MIUICAMERA), true)
-    $(call inherit-product, device/xiaomi/rodin-miuicamera/device.mk)
+    $(call inherit-product, device/xiaomi/klee-miuicamera/device.mk)
     PRODUCT_VENDOR_PROPERTIES += \
         vendor.camera.aux.packagelist=com.android.camera
 else
@@ -280,10 +280,10 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    FrameworksResOverlayRodin \
-    NfcOverlayRodin \
-    SettingsResOverlayRodin \
-    SystemUIOverlayRodin \
+    FrameworksResOverlayKlee \
+    NfcOverlayKlee \
+    SettingsResOverlayKlee \
+    SystemUIOverlayKlee \
     TetheringConfigOverlay \
     WifiOverlay
 
@@ -360,7 +360,7 @@ PRODUCT_COPY_FILES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service.rodin
+    vendor.qti.hardware.vibrator.service.klee
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
@@ -382,4 +382,4 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/rodin/rodin-vendor.mk)
+$(call inherit-product, vendor/xiaomi/klee/klee-vendor.mk)
